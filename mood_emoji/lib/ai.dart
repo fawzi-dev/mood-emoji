@@ -15,7 +15,7 @@ class GoogleStudioAi {
 
   Future<String> generate(String prompt) async {
     final chat = model.startChat(history: []);
-    final message = 'INSERT_INPUT_HERE';
+    final message = 'Write a heartfelt happy new year message based on this emoji $prompt (Do not include any steps in the message just a pure message)';
     final content = Content.text(message);
 
     final response = await chat.sendMessage(content);

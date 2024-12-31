@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mood_emoji/ai.dart';
+import 'package:mood_emoji/result.dart';
 
 class SelectEmojis extends StatefulWidget {
   const SelectEmojis({super.key});
@@ -9,6 +11,7 @@ class SelectEmojis extends StatefulWidget {
 
 class _SelectEmojisState extends State<SelectEmojis> {
   String selectedEmoji = '';
+  bool isLoading = false;
 
   final smileys = [
     "😊", // Smiling Face with Smiling Eyes
@@ -22,6 +25,9 @@ class _SelectEmojisState extends State<SelectEmojis> {
     "🙃", // Upside-Down Face
     "🥺", // Pleading Face
     "🤗", // Hugging Face
+    "🤓", // Nerd Face
+    "😎", // Smiling Face with Sunglasses
+    "🥹"
   ];
 
   @override
@@ -58,6 +64,32 @@ class _SelectEmojisState extends State<SelectEmojis> {
               ),
             );
           },
+        ),
+      ),
+      bottomSheet: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+            foregroundColor: Colors.white,
+            minimumSize: const Size.fromHeight(50),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          onPressed: () async {
+            setState(() {
+              isLoading = true;
+            });
+            final String result = await GoogleStudioAi().generate(selectedEmoji);
+            setState(() {
+              isLoading = false;
+            });
+            if (context.mounted) {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Result(result: result)));
+            }
+          },
+          child: isLoading ? const CircularProgressIndicator() : const Text("Submit"),
         ),
       ),
     );
