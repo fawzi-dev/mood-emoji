@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Result extends StatelessWidget {
   const Result({super.key, required this.result});
@@ -16,9 +17,7 @@ class Result extends StatelessWidget {
         child: Center(
           child: Text(
             result,
-            style: const TextStyle(
-              fontSize: 14,
-            ),
+            style: GoogleFonts.ibmPlexSansArabic(),
             textAlign: TextAlign.left,
           ),
         ),

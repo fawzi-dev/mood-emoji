@@ -92,7 +92,12 @@ class _SelectEmojisState extends State<SelectEmojis> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => Result(result: result)));
             }
           },
-          child: isLoading ? const CircularProgressIndicator() : const Text("Submit"),
+          child: isLoading
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: const CircularProgressIndicator(color: Colors.white),
+                )
+              : const Text("Submit"),
         ),
       ),
     );
