@@ -27,13 +27,10 @@ class _SelectEmojisState extends State<SelectEmojis> {
     "🤗", // Hugging Face
     "🤓", // Nerd Face
     "😎", // Smiling Face with Sunglasses
-    "🥹",
-
-    // sleepy
-
-    "🤤",
-    "😪",
-    "😴",
+    "🥹", // Grinning Face with Big Eyes
+    "🤤", // Drooling Face
+    "😪", // Relieved Face
+    "😴", // Sleeping Face
   ];
 
   @override
