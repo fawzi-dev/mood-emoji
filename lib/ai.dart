@@ -10,17 +10,17 @@ class GoogleStudioAi {
       topP: 0.95,
       maxOutputTokens: 8192,
       responseMimeType: 'text/plain',
+      stopSequences: ['\n\n'],
     ),
   );
 
   Future<String> generate(String prompt) async {
     final chat = model.startChat(history: []);
     final message =
-        'Write a heartfelt and inspiring message based on this emoji $prompt (Do not include any steps in the message just a pure message) in Kurdish Sorani';
+        'Write a heartfelt and inspiring message based on this emoji $prompt (Do not include any steps in the message just a pure message)';
     final content = Content.text(message);
 
     final response = await chat.sendMessage(content);
-    print(response.text);
     return response.text ?? ' ';
   }
 }

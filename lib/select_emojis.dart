@@ -45,17 +45,20 @@ class _SelectEmojisState extends State<SelectEmojis> {
           itemCount: smileys.length,
           itemBuilder: (context, index) {
             return InkWell(
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
               onTap: () {
                 setState(() {
                   selectedEmoji = smileys[index];
                 });
               },
               child: Card(
+                elevation: 0,
+                surfaceTintColor: Colors.transparent,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                   side: BorderSide(
                     width: 2,
-                    color: selectedEmoji == smileys[index] ? Colors.green : Colors.grey,
+                    color: selectedEmoji == smileys[index] ? Colors.green : Colors.grey.withAlpha(120),
                   ),
                 ),
                 child: Center(
