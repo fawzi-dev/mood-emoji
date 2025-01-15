@@ -1,9 +1,10 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 class GoogleStudioAi {
   final model = GenerativeModel(
     model: 'gemini-1.5-flash',
-    apiKey: 'AIzaSyCfBKrz7Xgz0vD_-oKeeup-TXBB3Sc0U4w',
+    apiKey: dotenv.env['API'] ?? '',
     generationConfig: GenerationConfig(
       temperature: 1,
       topK: 40,
